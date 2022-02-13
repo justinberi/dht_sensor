@@ -12,7 +12,6 @@ bom_data = pd.read_csv('IDCJAC0010_040211_2022_Data.csv', sep=',')
 
 print(my_data)
 
-plt.figure('Tempurature')
 
 pins = {4:"Roof", 17:"Interior"}
 
@@ -23,6 +22,7 @@ df = pd.DataFrame({'year': bom_data.Year,
 bom_data.date = pd.to_datetime(df)
 
 
+plt.figure('Tempurature')
 
 for pin, label in pins.items():
   ind = my_data["pin"] == pin
@@ -43,6 +43,29 @@ plt.ylabel("Temperature (C)")
 
 plt.legend()
 plt.grid()
+
+plt.figure('Tempurature Difference')
+
+ind4 = my_data["pin"] == 4
+ind17 = my_data["pin"] == 17
+plt.plot(my_data.date[ind4], my_data.temperature[ind4].to_numpy()-my_data.temperature[ind17].to_numpy(),  label="Roof-Interior")
+
+# plt.plot(bom_data.date, bom_data["Maximum temperature (Degree C)"], label='Archerfield Daily Max (BOM)')
+
+# Set the ticks
+locs, labels = plt.yticks()
+plt.yticks(np.arange(locs[0], locs[-1], 1))
+
+plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=1))
+
+plt.gcf().autofmt_xdate()
+
+plt.xlabel("Date")
+plt.ylabel("Temperature (C)")
+
+plt.legend()
+plt.grid()
+
 
 
 # import scipy
