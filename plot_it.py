@@ -50,6 +50,14 @@ ind4 = my_data["pin"] == 4
 ind17 = my_data["pin"] == 17
 plt.plot(my_data.date[ind4], my_data.temperature[ind4].to_numpy()-my_data.temperature[ind17].to_numpy(),  label="Roof-Interior")
 
+# Create a interpolant for the bom data (nearest cause it is sparse)
+import scipy
+import scipy.interpolate
+
+bom_interpolant = scipy.interpolate.interp1d(bom_data.date.astype(int).to_numpy(), bom_data["Maximum temperature (Degree C)"].to_numpy(), kind='nearest', bounds_error=False)
+bom_aligned = bom_interpolant(my_data.date[ind4].astype(int).to_numpy())
+plt.plot(my_data.date[ind4], my_data.temperature[ind17].to_numpy()-bom_aligned,  label="Interior-BomMax")
+
 # plt.plot(bom_data.date, bom_data["Maximum temperature (Degree C)"], label='Archerfield Daily Max (BOM)')
 
 # Set the ticks
