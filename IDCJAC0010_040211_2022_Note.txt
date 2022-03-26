@@ -2,7 +2,7 @@ Australian Government
 Bureau of Meteorology
 
 Notes for Daily Maximum Temperature Climate Data
-Product code: IDCJAC0010 reference: 83114057
+Product code: IDCJAC0010 reference: 84127648
 ____________________________________________________________________
 
 ** Station Details **
@@ -102,7 +102,7 @@ http://www.bom.gov.au/climate/how/contacts.shtml
 
 _________________________________________
 
-Created on Mon 21 Feb 2022 20:01:37 PM AEDT from Climate Data Online, Bureau of Meteorology.
+Created on Sat 26 Mar 2022 10:58:43 AM AEDT from Climate Data Online, Bureau of Meteorology.
 http://www.bom.gov.au/climate/data
 
 Further information on this product: http://www.bom.gov.au/climate/cdo/about/about-airtemp-data.shtml
